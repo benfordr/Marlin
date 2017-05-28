@@ -91,28 +91,26 @@
 #define X_STEP_PIN         54
 #define X_DIR_PIN          55
 #define X_ENABLE_PIN       38
-#define X_CS_PIN           53
 
 #define Y_STEP_PIN         60
 #define Y_DIR_PIN          61
 #define Y_ENABLE_PIN       56
-#define Y_CS_PIN           49
 
 #define Z_STEP_PIN         46
 #define Z_DIR_PIN          48
 #define Z_ENABLE_PIN       62
-#define Z_CS_PIN           40
 
 #define E0_STEP_PIN        26
 #define E0_DIR_PIN         28
 #define E0_ENABLE_PIN      24
-#define E0_CS_PIN          42
 
 #define E1_STEP_PIN        36
 #define E1_DIR_PIN         34
 #define E1_ENABLE_PIN      30
-#define E1_CS_PIN          44
 
+#define E2_STEP_PIN        64
+#define E2_DIR_PIN         59
+#define E2_ENABLE_PIN      44
 //
 // Temperature Sensors
 //
@@ -174,6 +172,7 @@
 #elif ENABLED(IS_RAMPS_EFF)                    // Hotend, Fan, Fan
   #define FAN_PIN        RAMPS_D9_PIN
   #define FAN1_PIN       RAMPS_D8_PIN
+  #define CONTROLLERFAN_PIN  -1
 #elif ENABLED(IS_RAMPS_SF)                     // Spindle, Fan
   #define FAN_PIN        RAMPS_D8_PIN
 #else                                          // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
@@ -257,7 +256,7 @@
       #define BTN_EN2 33
       #define BTN_ENC 35
 
-      #define SD_DETECT_PIN 49
+      #define SD_DETECT_PIN -1
       #define KILL_PIN 41
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
@@ -268,7 +267,7 @@
       #define BTN_EN1 64
       #define BTN_EN2 59
       #define BTN_ENC 63
-      #define SD_DETECT_PIN 42
+      #define SD_DETECT_PIN -1
     #elif ENABLED(LCD_I2C_PANELOLU2)
       #define BTN_EN1 47  // reverse if the encoder turns the wrong way.
       #define BTN_EN2 43
@@ -283,7 +282,7 @@
                           // 22/7 are unused on RAMPS_14. 22 is unused and 7 the SERVO0_PIN on RAMPS_13.
       #define BTN_ENC -1
       #define LCD_SDSS 53
-      #define SD_DETECT_PIN 49
+      #define SD_DETECT_PIN -1
     #elif ENABLED(VIKI2) || ENABLED(miniVIKI)
       #define BEEPER_PIN       33
 
@@ -308,7 +307,7 @@
       #define BTN_EN1 35  // reverse if the encoder turns the wrong way.
       #define BTN_EN2 37
       #define BTN_ENC 31
-      #define SD_DETECT_PIN 49
+      #define SD_DETECT_PIN -1
       #define LCD_SDSS 53
       #define KILL_PIN 41
       #define BEEPER_PIN 23
@@ -335,7 +334,7 @@
       #define BTN_EN2 63
       #define BTN_ENC 59
       // not connected to a pin
-      #define SD_DETECT_PIN 49
+      #define SD_DETECT_PIN -1
 
     #else
 
@@ -357,14 +356,14 @@
       #else
         #define BTN_EN1 37
         #define BTN_EN2 35
-        #define BTN_ENC 31 // the click
+        #define BTN_ENC 31  // the click
       #endif
 
       #if ENABLED(G3D_PANEL)
-        #define SD_DETECT_PIN 49
+        #define SD_DETECT_PIN -1
         #define KILL_PIN 41
       #else
-        //#define SD_DETECT_PIN -1 // Ramps doesn't use this
+        #define SD_DETECT_PIN -1  // Ramps doesn't use this
       #endif
 
     #endif
